@@ -1,8 +1,5 @@
-import 'package:calculator/darkGreyButton.dart';
 import 'package:flutter/material.dart';
-import 'package:calculator/greyButton.dart';
-import 'package:calculator/orangeButton.dart';
-
+import 'package:calculator/button.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -42,22 +39,22 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: greyButton(operation: 'AC'),
+                  child: Button.greyButton(content: 'AC'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: greyButton(operation: '+/-'),
+                  child: Button.greyButton(content: '+/-'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: greyButton(operation: '%')
+                  child: Button.greyButton(content: '%')
                 ),
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: orangeButton(operation: '/',)
+                  child: Button.orangeButton(content: '/',)
                 ),
                 SizedBox(width: gap),
               ],
@@ -69,22 +66,22 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: darkGreyButton(operation: '7'),
+                  child: Button.darkGreyButton(content: '7'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: darkGreyButton(operation: '8'),
+                  child: Button.darkGreyButton(content: '8'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                     flex: 1,
-                    child: darkGreyButton(operation: '9')
+                    child: Button.darkGreyButton(content: '9')
                 ),
                 SizedBox(width: gap),
                 Expanded(
                     flex: 1,
-                    child: orangeButton(operation: '*',)
+                    child: Button.orangeButton(content: '*',)
                 ),
                 SizedBox(width: gap),
               ],
@@ -96,22 +93,22 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: darkGreyButton(operation: '4'),
+                  child: Button.darkGreyButton(content: '4'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: darkGreyButton(operation: '5'),
+                  child: Button.darkGreyButton(content: '5'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                     flex: 1,
-                    child: darkGreyButton(operation: '6')
+                    child: Button.darkGreyButton(content: '6')
                 ),
                 SizedBox(width: gap),
                 Expanded(
                     flex: 1,
-                    child: orangeButton(operation: '-',)
+                    child: Button.orangeButton(content: '-',)
                 ),
                 SizedBox(width: gap),
               ],
@@ -123,22 +120,22 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: darkGreyButton(operation: '1'),
+                  child: Button.darkGreyButton(content: '1'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: darkGreyButton(operation: '2'),
+                  child: Button.darkGreyButton(content: '2'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                     flex: 1,
-                    child: darkGreyButton(operation: '3')
+                    child: Button.darkGreyButton(content: '3')
                 ),
                 SizedBox(width: gap),
                 Expanded(
                     flex: 1,
-                    child: orangeButton(operation: '+',)
+                    child: Button.orangeButton(content: '+',)
                 ),
                 SizedBox(width: gap),
               ],
@@ -152,17 +149,17 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(width: gap),
                 Expanded(
                   flex: 2,
-                  child: darkGreyButton(operation: '0'),
+                  child: Button.darkGreyButton(content: '0'),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: darkGreyButton(operation: ','),
+                  child: Button.darkGreyButton(content: ','),
                 ),
                 SizedBox(width: gap),
                 Expanded(
                     flex: 1,
-                    child: orangeButton(operation: '=',)
+                    child: Button.orangeButton(content: '=',)
                 ),
                 SizedBox(width: gap),
               ],
