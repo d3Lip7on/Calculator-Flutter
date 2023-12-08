@@ -30,7 +30,14 @@ class _MyAppState extends State<MyApp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(result.toString())
+                Text(
+                  result.toString(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(width: gap,)
               ],
             ),
             SizedBox(height: gap,),

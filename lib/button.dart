@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:calculator/main.dart';
 
 class Button extends StatelessWidget {
   String content;
@@ -18,21 +19,28 @@ class Button extends StatelessWidget {
     backgroundColor = Colors.grey[900];
   }
 
+  insert() {
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+      ),
+
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(backgroundColor),
+        ),
         child: Text(content,
           style: TextStyle(
             fontSize: 20,
             color: color,
           ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(backgroundColor),
         ),
       ),
     );;
