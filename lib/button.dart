@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:calculator/main.dart';
+import 'package:calculator/input.dart';
 
 class Button extends StatelessWidget {
   String content;
   Color? backgroundColor;
   Color? color;
-  Button({super.key, required this.content, this.backgroundColor, this.color});
-  Button.orangeButton({super.key, required this.content}){
+  VoidCallback onPressed;
+
+
+  Button({super.key, required this.content, this.backgroundColor, this.color, required this.onPressed});
+  Button.orangeButton({super.key, required this.content, required this.onPressed}){
     color = Colors.white;
     backgroundColor = Colors.orangeAccent;
   }
-  Button.greyButton({super.key, required this.content}){
+  Button.greyButton({super.key, required this.content, required this.onPressed}){
     color = Colors.black;
     backgroundColor = Colors.grey;
   }
-  Button.darkGreyButton({super.key, required this.content}){
+  Button.darkGreyButton({super.key, required this.content, required this.onPressed}){
     color = Colors.white;
     backgroundColor = Colors.grey[900];
   }
 
-  insert() {
-
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +32,7 @@ class Button extends StatelessWidget {
       ),
 
       child: ElevatedButton(
-        onPressed: () {
-        },
+        onPressed: onPressed,
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(backgroundColor),
         ),
