@@ -26,23 +26,30 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-      ),
-
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(backgroundColor),
-        ),
-        child: Text(content,
-          style: TextStyle(
-            fontSize: 20,
-            color: color,
-          ),
-        ),
-      ),
-    );;
+    return InkWell(
+      onTap: onPressed,
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints){
+          double parentWidth = constraints.maxWidth;
+          return Container(
+            width: parentWidth,
+            //height: parentWidth,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(parentWidth / 2 + 5),
+              color: backgroundColor,
+            ),
+            child: Center(
+              child: Text(
+                content,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 50,
+                ),
+              ),
+            ),
+          );
+        },
+      )
+    );
   }
 }

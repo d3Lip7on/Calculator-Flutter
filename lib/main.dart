@@ -17,6 +17,11 @@ class _MyAppState extends State<MyApp> {
   String _expression = '0';
   double gap = 15;
 
+  double a = 0;
+  double b = 0;
+  String? operation;
+  String variable = 'a';
+
   double evaluateExpression(String expression) {
     Parser parser = Parser();
     Expression exp = parser.parse(expression);
@@ -24,11 +29,15 @@ class _MyAppState extends State<MyApp> {
     return exp.evaluate(EvaluationType.REAL, cm);
   }
 
+
+
   void updateExpression(String value) {
     switch (value){
       case 'AC':
         setState(() {
           _expression = '';
+          a = 0;
+          b = 0;
         });
         break;
       case '+/-':
@@ -84,7 +93,7 @@ class _MyAppState extends State<MyApp> {
               _expression,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 30,
+                fontSize: 80,
               ),
             ),
                 SizedBox(width: gap,)
