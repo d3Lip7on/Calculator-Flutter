@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:calculator/button.dart';
-import 'package:math_expressions/math_expressions.dart';
+import 'package:calculator/executor.dart';
+
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -17,17 +19,13 @@ class _MyAppState extends State<MyApp> {
   String _expression = '0';
   double gap = 15;
 
-  double a = 0;
-  double b = 0;
   String? operation;
-  String variable = 'a';
 
-  double evaluateExpression(String expression) {
-    Parser parser = Parser();
-    Expression exp = parser.parse(expression);
-    ContextModel cm = ContextModel();
-    return exp.evaluate(EvaluationType.REAL, cm);
-  }
+  Executor executor = Executor();
+
+  bool clearStr = true;
+
+
 
 
 
@@ -36,8 +34,8 @@ class _MyAppState extends State<MyApp> {
       case 'AC':
         setState(() {
           _expression = '';
-          a = 0;
-          b = 0;
+          executor.a = 0;
+          executor.b = 0;
         });
         break;
       case '+/-':
@@ -52,9 +50,12 @@ class _MyAppState extends State<MyApp> {
         break;
       case '=':
         try{
-          double result = evaluateExpression(_expression);
+          double result = 0;
+          executor.setVariableValue = _expression;
+          result = executor.execute();
+
           setState(() {
-            _expression = result.toString();
+            _expression = (result.roundToDouble() == result) ? result.toInt().toString() : result.toString();
           });
         }
         catch (err){
@@ -65,14 +66,23 @@ class _MyAppState extends State<MyApp> {
         break;
 
       default:
-        setState(() {
-          _expression += value;
-        });
-
+        if (value == '+' || value == '-' || value == '*' || value == '/'){
+          executor.setVariableValue = _expression;
+          executor.setOperationValue = value;
+          executor.variable = true;
+          clearStr = true;
+        }
+        else{
+          if (clearStr) {
+            _expression = '';
+            clearStr = false;
+          }
+          setState(() {
+            _expression += value;
+          });
+        }
     }
-
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +230,7 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(width: gap),
                 Expanded(
                   flex: 1,
-                  child: Button.darkGreyButton(content: ',' , onPressed: () => updateExpression(',')),
+                  child: Button.darkGreyButton(content: '.' , onPressed: () => updateExpression('.')),
                 ),
                 SizedBox(width: gap),
                 Expanded(
